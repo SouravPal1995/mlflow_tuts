@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/GEI_2024/mlflow_tuts/mlruns/971428065977521689/3eed1f4a60f849c786f8c1ebf9bf713c/artifacts
+end_time: 1715782344350
+entry_point_name: ''
+experiment_id: '971428065977521689'
+lifecycle_stage: active
+run_id: 3eed1f4a60f849c786f8c1ebf9bf713c
+run_name: gentle-shrimp-363
+run_uuid: 3eed1f4a60f849c786f8c1ebf9bf713c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715782339936
+status: 3
+tags: []
+user_id: spal

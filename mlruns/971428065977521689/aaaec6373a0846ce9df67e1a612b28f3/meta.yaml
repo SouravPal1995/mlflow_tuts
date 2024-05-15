@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/GEI_2024/mlflow_tuts/mlruns/971428065977521689/aaaec6373a0846ce9df67e1a612b28f3/artifacts
+end_time: 1715762015940
+entry_point_name: ''
+experiment_id: '971428065977521689'
+lifecycle_stage: active
+run_id: aaaec6373a0846ce9df67e1a612b28f3
+run_name: debonair-goat-626
+run_uuid: aaaec6373a0846ce9df67e1a612b28f3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715762012287
+status: 3
+tags: []
+user_id: spal

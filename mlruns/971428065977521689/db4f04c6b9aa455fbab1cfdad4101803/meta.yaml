@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/GEI_2024/mlflow_tuts/mlruns/971428065977521689/db4f04c6b9aa455fbab1cfdad4101803/artifacts
+end_time: 1715761920014
+entry_point_name: ''
+experiment_id: '971428065977521689'
+lifecycle_stage: active
+run_id: db4f04c6b9aa455fbab1cfdad4101803
+run_name: agreeable-crab-471
+run_uuid: db4f04c6b9aa455fbab1cfdad4101803
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715761915967
+status: 3
+tags: []
+user_id: spal

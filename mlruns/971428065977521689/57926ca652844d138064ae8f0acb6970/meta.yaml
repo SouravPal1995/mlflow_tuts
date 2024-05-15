@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/GEI_2024/mlflow_tuts/mlruns/971428065977521689/57926ca652844d138064ae8f0acb6970/artifacts
+end_time: 1715782256017
+entry_point_name: ''
+experiment_id: '971428065977521689'
+lifecycle_stage: active
+run_id: 57926ca652844d138064ae8f0acb6970
+run_name: rebellious-fowl-670
+run_uuid: 57926ca652844d138064ae8f0acb6970
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715782252355
+status: 3
+tags: []
+user_id: spal

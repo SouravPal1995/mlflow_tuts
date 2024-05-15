@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/GEI_2024/mlflow_tuts/mlruns/971428065977521689/40d410dc7d6e43a69d34a28c6b181725/artifacts
+end_time: 1715782273594
+entry_point_name: ''
+experiment_id: '971428065977521689'
+lifecycle_stage: active
+run_id: 40d410dc7d6e43a69d34a28c6b181725
+run_name: powerful-lark-681
+run_uuid: 40d410dc7d6e43a69d34a28c6b181725
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715782270018
+status: 3
+tags: []
+user_id: spal

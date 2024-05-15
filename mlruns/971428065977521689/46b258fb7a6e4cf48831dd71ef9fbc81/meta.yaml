@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/GEI_2024/mlflow_tuts/mlruns/971428065977521689/46b258fb7a6e4cf48831dd71ef9fbc81/artifacts
+end_time: 1715762029949
+entry_point_name: ''
+experiment_id: '971428065977521689'
+lifecycle_stage: active
+run_id: 46b258fb7a6e4cf48831dd71ef9fbc81
+run_name: polite-fawn-89
+run_uuid: 46b258fb7a6e4cf48831dd71ef9fbc81
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715762025964
+status: 3
+tags: []
+user_id: spal
