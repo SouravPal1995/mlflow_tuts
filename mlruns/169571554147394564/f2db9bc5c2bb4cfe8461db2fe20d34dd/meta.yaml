@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/GEI_2024/mlflow_tuts/mlruns/169571554147394564/f2db9bc5c2bb4cfe8461db2fe20d34dd/artifacts
+end_time: 1716198790614
+entry_point_name: ''
+experiment_id: '169571554147394564'
+lifecycle_stage: active
+run_id: f2db9bc5c2bb4cfe8461db2fe20d34dd
+run_name: run_2024-05-20_5
+run_uuid: f2db9bc5c2bb4cfe8461db2fe20d34dd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716198787181
+status: 3
+tags: []
+user_id: spal

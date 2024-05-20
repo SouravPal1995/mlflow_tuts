@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/GEI_2024/mlflow_tuts/mlruns/349721290141451752/889914b8c6544212a6b82a5360762d44/artifacts
+end_time: 1715931233702
+entry_point_name: ''
+experiment_id: '349721290141451752'
+lifecycle_stage: active
+run_id: 889914b8c6544212a6b82a5360762d44
+run_name: luminous-sow-836
+run_uuid: 889914b8c6544212a6b82a5360762d44
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715931227739
+status: 3
+tags: []
+user_id: spal

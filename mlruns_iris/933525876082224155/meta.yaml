@@ -1,0 +1,6 @@
+artifact_location: file:///C:/GEI_2024/mlflow_tuts/mlruns_iris/933525876082224155
+creation_time: 1716208047652
+experiment_id: '933525876082224155'
+last_update_time: 1716208047652
+lifecycle_stage: active
+name: iris-classification-ml-model

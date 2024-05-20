@@ -8,6 +8,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import ElasticNet
 import mlflow
 import mlflow.sklearn
+from pathlib import Path
+from datetime import datetime
 
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
@@ -42,15 +44,40 @@ if __name__ == "__main__":
     test_x = test.drop(["quality"], axis=1)
     train_y = train[["quality"]]
     test_y = test[["quality"]]
+    
+    train_x.to_csv("./data/train_x.csv")
+    test_x.to_csv("./data/test_x.csv")
+    train_y.to_csv("./data/train_y.csv")
+    test_y.to_csv("./data/test_y.csv")
 
     alpha = args.alpha
     l1_ratio = args.l1_ratio
 
+    mlflow.set_tracking_uri("./wine_quality")
+    
+    print(mlflow.get_tracking_uri())
+    
+    # exp_id = mlflow.create_experiment(
+    #     name = "exp-4",
+    #     tags = {
+    #         "project":"proj-1",
+    #         "brand":"ueg",
+    #         "priority": "high"
+    #     },
+    #     artifact_location = Path.cwd().joinpath("myartifacts").as_uri()
+        
+    # )
+    
+    
     experiment = mlflow.set_experiment(
-        experiment_name = "exp-1"
+        experiment_name = "exp-5",
     )
     
-    with mlflow.start_run(experiment_id=experiment.experiment_id):
+    with mlflow.start_run(
+            experiment_id=experiment.experiment_id, 
+            run_name = f"run_{datetime.now().strftime('%Y-%m-%d')}_5"
+            #run_id="8307b6bbdbca4e17891b7f2ce1bd46b0"
+        ):#experiment.experiment_id
     
         lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
         lr.fit(train_x, train_y)
@@ -64,15 +91,39 @@ if __name__ == "__main__":
         print("  MAE: %s" % mae)
         print("  R2: %s" % r2)
         
-        mlflow.log_param(
-            key = "alpha", 
-            value = args.alpha
+        # mlflow.log_param(
+        #     key = "alpha", 
+        #     value = args.alpha
+        # )
+        
+        #mlflow.log_param("l1-ratio", args.l1_ratio)
+        
+        mlflow.log_params({
+            "alpha": args.alpha,
+            "l1-ratio": args.l1_ratio
+        })
+        
+        # mlflow.log_metric("RMSE", rmse)
+        # mlflow.log_metric("MAE", mae)
+        # mlflow.log_metric("R2", r2)
+        
+        mlflow.log_metrics({
+            "RMSE": rmse,
+            "MAE": mae,
+            "R2": r2
+        })
+        
+        mlflow.log_artifacts(
+            local_dir = "./data/",
+            artifact_path = "artifacts_custom"#Path.cwd().joinpath("myartifacts")
         )
-        mlflow.log_param("l1-ratio", args.l1_ratio)
         
-        mlflow.log_metric("RMSE", rmse)
-        mlflow.log_metric("MAE", mae)
-        mlflow.log_metric("R2", r2)
+        mlflow.set_tag(key="release.version", value="0.1")
         
-        mlflow.sklearn.log_model(lr, "my_model")
+        mlflow.set_tags({
+            "release.date": datetime.now().strftime("%Y-%m-%d"),
+            "release.time": datetime.now().strftime("%H:%M:%S")
+        })
+        
+        mlflow.sklearn.log_model(lr, "my_model_2")
 

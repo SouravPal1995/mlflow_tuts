@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/GEI_2024/mlflow_tuts/myartifacts/daa1bec1c387477f809d310ad96e976c/artifacts
+end_time: 1715932173023
+entry_point_name: ''
+experiment_id: '317603297945109534'
+lifecycle_stage: active
+run_id: daa1bec1c387477f809d310ad96e976c
+run_name: overjoyed-toad-219
+run_uuid: daa1bec1c387477f809d310ad96e976c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715932167223
+status: 3
+tags: []
+user_id: spal
