@@ -15,9 +15,8 @@ from datetime import datetime
 
 import mlflow
 import mlflow.sklearn
-from mlflow.data import from_pandas
 
-mlflow.set_tracking_uri("./mlruns_iris")
+mlflow.set_tracking_uri("./mlruns_iris_2")
 
 parser = argparse.ArgumentParser()
 
@@ -47,7 +46,7 @@ if __name__=="__main__":
     y_test.to_csv("./iris_data_artifacts/y_test.csv")
 
     experiment = mlflow.set_experiment(
-        experiment_name="iris-classification-ml-model"
+        experiment_name="iris-classification-ml-model_2"
     )
 
     with mlflow.start_run(
@@ -65,6 +64,12 @@ if __name__=="__main__":
 
         mlflow.set_tag(key="start", value = datetime.now().strftime("%Y-%m-%d::%H:%M:%S"))
         
+        mlflow.sklearn.autolog(
+            log_input_examples=True, 
+            max_tuning_runs=100,
+            registered_model_name="ml-1-test"
+        )
+        
         lm = LogisticRegression(solver = args.solver,
                                 penalty=args.penalty,
                                 multi_class=args.multi_class,
@@ -78,26 +83,10 @@ if __name__=="__main__":
         
         pd.DataFrame(data = {"variety":y_predicted}).to_csv("./iris_data_artifacts/y_predicted.csv")
         
-        X_train_complete = pd.concat([X_train, y_train], axis=1)
-        X_test_complete = pd.concat([X_test, y_test], axis = 1)
-        
-        X_train_complete_mlflow = from_pandas(X_train_complete)
-        X_test_complete_mlflow = from_pandas(X_test_complete)
-        
-        mlflow.log_input(
-            dataset = X_train_complete_mlflow,
-            context = "training"
-        )
-        
-        mlflow.log_input(
-            dataset = X_test_complete_mlflow,
-            context = "testing"
-        )
-        
-        mlflow.log_artifacts(
-            local_dir="./iris_data_artifacts",
-            artifact_path="iris_data_artifacts"
-        )
+        # mlflow.log_artifacts(
+        #     local_dir="./iris_data_artifacts",
+        #     artifact_path="iris_data_artifacts"
+        # )
 
         precision_macro = precision_score(y_test, y_predicted, average="macro")
         recall_macro = recall_score(y_test, y_predicted, average="macro")
@@ -110,25 +99,25 @@ if __name__=="__main__":
         print(f"accuracy: {accuracy}")
         
         
-        mlflow.log_params({
-            "solver": args.solver,
-            "penalty": args.penalty,
-            "multi_class": args.multi_class,
-            "C": args.C,
-            "max_iter":args.max_iter
-        })
+        # mlflow.log_params({
+        #     "solver": args.solver,
+        #     "penalty": args.penalty,
+        #     "multi_class": args.multi_class,
+        #     "C": args.C,
+        #     "max_iter":args.max_iter
+        # })
         
-        mlflow.log_metrics({
-            "Precision-Macro": precision_macro,
-            "Recall-Macro": recall_macro,
-            "F1-Macro": f1_macro,
-            "accuracy":accuracy
-        })
+        # mlflow.log_metrics({
+        #     "Precision-Macro": precision_macro,
+        #     "Recall-Macro": recall_macro,
+        #     "F1-Macro": f1_macro,
+        #     "accuracy":accuracy
+        # })
         
-        mlflow.sklearn.log_model(
-            sk_model=lm,
-            artifact_path="iris_model_artifacts"
-        )
+        # mlflow.sklearn.log_model(
+        #     sk_model=lm,
+        #     artifact_path="iris_model_artifacts"
+        # )
 
         mlflow.set_tag(key="end", value = datetime.now().strftime("%Y-%m-%d::%H:%M:%S"))
         

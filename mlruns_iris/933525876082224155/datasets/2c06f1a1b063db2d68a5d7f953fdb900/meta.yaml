@@ -1,0 +1,9 @@
+digest: 587675e1
+name: dataset
+profile: '{"num_rows": 120, "num_elements": 600}'
+schema: '{"mlflow_colspec": [{"type": "double", "name": "sepal.length"}, {"type":
+  "double", "name": "sepal.width"}, {"type": "double", "name": "petal.length"}, {"type":
+  "double", "name": "petal.width"}, {"type": "string", "name": "variety"}]}'
+source: '{"tags": {"mlflow.user": "spal", "mlflow.source.name": "iris.py", "mlflow.source.type":
+  "LOCAL"}}'
+source_type: code

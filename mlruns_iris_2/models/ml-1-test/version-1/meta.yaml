@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1716302350941
+current_stage: None
+description: null
+last_updated_timestamp: 1716302350941
+name: ml-1-test
+run_id: a6b98a786b8246bab988e40c14de0d5e
+run_link: null
+source: file:///C:/GEI_2024/mlflow_tuts/mlruns_iris_2/782498908045050050/a6b98a786b8246bab988e40c14de0d5e/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///C:/GEI_2024/mlflow_tuts/mlruns_iris_2/782498908045050050/a6b98a786b8246bab988e40c14de0d5e/artifacts/model
+user_id: null
+version: 1
