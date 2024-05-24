@@ -17,7 +17,7 @@ import mlflow
 import mlflow.sklearn
 from mlflow.data import from_pandas
 
-mlflow.set_tracking_uri("./mlruns_iris")
+mlflow.set_tracking_uri(uri = "http://127.0.0.1:8081")
 
 parser = argparse.ArgumentParser()
 
