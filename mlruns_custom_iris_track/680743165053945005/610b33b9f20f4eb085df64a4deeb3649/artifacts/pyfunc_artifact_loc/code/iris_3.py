@@ -9,6 +9,10 @@ from sklearn.metrics import (
     accuracy_score, 
 )
 
+import sklearn
+import joblib
+import cloudpickle
+
 import argparse
 
 from datetime import datetime
@@ -19,7 +23,9 @@ from mlflow.data import from_pandas
 from mlflow.models.signature import ModelSignature, infer_signature
 from mlflow.types.schema import Schema, ColSpec
 
-mlflow.set_tracking_uri("")
+mlflow.set_tracking_uri("file:///C:\GEI_2024\mlflow_tuts\mlruns_custom_iris_track")
+
+print(mlflow.get_tracking_uri())
 
 parser = argparse.ArgumentParser()
 
@@ -127,58 +133,32 @@ if __name__=="__main__":
             "accuracy":accuracy
         })
         
-        # input_data =[
-        #     {"type": "double", "name": "sepal.length"}, 
-        #     {"type":"double", "name": "sepal.width"}, 
-        #     {"type": "double", "name":"petal.length"}, 
-        #     {"type": "double", "name": "petal.width"}
-        # ]
         
-        # output_data = [
-        #     {"type": "string"}
-        # ]
-        
-        # input_schema = Schema(
-        #     [ColSpec(col["type"], col["name"]) for col in input_data]
-        # )
-        
-        # output_schema = Schema(
-        #     [ColSpec(col["type"]) for col in output_data]
-        # )
-        
-        # input_example = {
-        #     "sepal.length":5.7,
-        #     "sepal.width":3.0,
-        #     "petal.length":4.2,
-        #     "petal.width":1.2
-        # }
-        
-        # #output_example = []
-        
-        # signature = ModelSignature(
-        #     inputs = input_schema,
-        #     outputs=output_schema
-        # )
-        
-        signature = infer_signature(
-            X_test,
-            y_predicted
+        joblib.dump(
+            value=lm,
+            filename="./iris_model_custom/iris.pkl"
         )
         
-        input_example = {
-            "columns": np.array(X_test.columns),
-            "data": X_test.to_numpy()
+        class CustomModelIris(mlflow.pyfunc.PythonModel):
+            def load_context(self, context):
+                self.model = joblib.load(context.artifacts["sklearn_model"])
+
+            def predict(self, model_input):
+                return self.model.predict(model_input.values)
+        
+        artifacts_dict = {
+            "sklearn_model": "./iris_model_custom/iris.pkl",
+            "data_artifacts": "./iris_data_artifacts"
         }
         
-        mlflow.sklearn.log_model(
-            sk_model=lm,
-            artifact_path="iris_model_artifacts",
-            signature=signature,
-            input_example=input_example
+        mlflow.pyfunc.log_model(
+            artifact_path="pyfunc_artifact_loc",
+            python_model=CustomModelIris(),
+            artifacts = artifacts_dict,
+            code_path = ["iris_3.py"],
+            conda_env = None
         )
 
         mlflow.set_tag(key="end", value = datetime.now().strftime("%Y-%m-%d::%H:%M:%S"))
         
     print(f"Last active run: {mlflow.last_active_run().info.run_name}")
-        
-

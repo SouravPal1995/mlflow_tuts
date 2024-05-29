@@ -1,0 +1,23 @@
+artifact_path: pyfunc_artifact_loc
+flavors:
+  python_function:
+    artifacts:
+      data_artifacts:
+        path: artifacts\iris_data_artifacts
+        uri: ./iris_data_artifacts
+      sklearn_model:
+        path: artifacts\iris.pkl
+        uri: ./iris_model_custom/iris.pkl
+    cloudpickle_version: 2.2.1
+    code: code
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.11.9
+mlflow_version: 2.9.2
+model_size_bytes: 14450
+model_uuid: ef9008192e57449a9b45a0f665179c63
+run_id: e46acf7b89ed4d159ff7b4a3e8e5917f
+utc_time_created: '2024-05-29 11:31:36.103914'

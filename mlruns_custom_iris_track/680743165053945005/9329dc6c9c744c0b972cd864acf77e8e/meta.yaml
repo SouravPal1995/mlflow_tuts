@@ -1,0 +1,15 @@
+artifact_uri: file:///C:\GEI_2024\mlflow_tuts\mlruns_custom_iris_track/680743165053945005/9329dc6c9c744c0b972cd864acf77e8e/artifacts
+end_time: 1716982158170
+entry_point_name: ''
+experiment_id: '680743165053945005'
+lifecycle_stage: active
+run_id: 9329dc6c9c744c0b972cd864acf77e8e
+run_name: iris-run-2024-05-29::16:59:14
+run_uuid: 9329dc6c9c744c0b972cd864acf77e8e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716982154716
+status: 4
+tags: []
+user_id: spal
